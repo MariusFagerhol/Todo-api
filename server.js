@@ -7,6 +7,14 @@ var PORT = process.env.PORT || 3000;
 var todos = [];
 var todoNextId = 1;
 
+var testItems = [
+    {
+        "name": "RandomName",
+        "lastName": "RandomLastName",
+        "id": 1
+    }
+];
+
 app.use(bodyParser.json());
 
 app.get("/", function(req, res) {
@@ -24,10 +32,13 @@ app.get("/todos", function(req, res) {
         filteredTodos = _.where(filteredTodos, {completed: false});
     }
     
-   
-    
    res.json(filteredTodos); 
 });
+
+//GET test
+app.get("/test", function(req, res) {
+    res.json(testItems);
+})
 
 // GET /todos/:id
 app.get("/todos/:id", function(req, res) {
